@@ -1,0 +1,50 @@
+{
+    "name": "vesperabr/laravel-data-binder",
+    "description": "Bind and retrieve input data",
+    "keywords": [
+        "vespera",
+        "laravel",
+        "bind",
+        "input"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/vesperabr/laravel-data-binder",
+    "authors": [
+        {
+            "name": "Ricardo Monteiro",
+            "email": "ricardo.monteiro@vespera.com.br"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "illuminate/support": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.20",
+        "phpunit/phpunit": "^9.4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vespera\\DataBinder\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vespera\\DataBinder\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vespera\\DataBinder\\Support\\ServiceProvider"
+            ]
+        }
+    }
+}
