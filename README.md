@@ -19,9 +19,8 @@ You can append values to the binding tree by two ways:
 ### Using `bind()` method
 
 ```php
-use Vespera\DataBinder\DataBinder;
-$binder = app(DataBinder::class);
-$binder->bind(['foo' => 'bar'])
+use Vespera\DataBinder\Support\Facades\DataBinder;
+DataBinder::bind(['foo' => 'bar'])
 ```
 
 ### Using blade directives
@@ -37,9 +36,8 @@ $binder->bind(['foo' => 'bar'])
 To remove the last data from binding tree just call `pop()` method.
 
 ```php
-use Vespera\DataBinder\DataBinder;
-$binder = app(DataBinder::class);
-$binder->pop();
+use Vespera\DataBinder\Support\FacadesDataBinder;
+DataBinder::pop();
 ```
 
 ## Retrieving values from binding

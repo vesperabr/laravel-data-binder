@@ -2,7 +2,7 @@
 
 namespace Vespera\DataBinder\Tests\Unit;
 
-use Vespera\DataBinder\DataBinder;
+use Vespera\DataBinder\Support\Facades\DataBinder;
 use Vespera\DataBinder\Tests\TestCase;
 
 class DataBinderTest extends TestCase
@@ -10,28 +10,25 @@ class DataBinderTest extends TestCase
     /** @test */
     public function it_can_bind_data()
     {
-        $binder = app(DataBinder::class);
-        $this->assertNull($binder->last());
+        $this->assertNull(DataBinder::last());
 
         $data = ['foo' => 'bar'];
-        $binder->bind($data);
-        $this->assertEquals($data, $binder->last());
+        DataBinder::bind($data);
+        $this->assertEquals($data, DataBinder::last());
     }
 
     /** @test */
     public function it_can_bind_multiple_data()
     {
-        $binder = app(DataBinder::class);
+        DataBinder::bind($targetA = ['foo' => 'bar']);
+        DataBinder::bind($targetB = ['baz' => 'boo']);
 
-        $binder->bind($targetA = ['foo' => 'bar']);
-        $binder->bind($targetB = ['baz' => 'boo']);
+        $this->assertEquals($targetB, DataBinder::last());
+        DataBinder::pop();
 
-        $this->assertEquals($targetB, $binder->last());
-        $binder->pop();
+        $this->assertEquals($targetA, DataBinder::last());
+        DataBinder::pop();
 
-        $this->assertEquals($targetA, $binder->last());
-        $binder->pop();
-
-        $this->assertNull($binder->last());
+        $this->assertNull(DataBinder::last());
     }
 }

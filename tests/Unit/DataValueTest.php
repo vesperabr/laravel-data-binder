@@ -3,7 +3,7 @@
 namespace Vespera\DataBinder\Tests\Unit;
 
 use Illuminate\Support\Collection;
-use Vespera\DataBinder\DataBinder;
+use Vespera\DataBinder\Support\Facades\DataBinder;
 use Vespera\DataBinder\Support\Facades\DataValue;
 use Vespera\DataBinder\Tests\Support\Models\Comment;
 use Vespera\DataBinder\Tests\Support\Models\PostBelongsToMany;
@@ -20,18 +20,14 @@ class DataValueTest extends TestCase
     /** @test */
     public function it_can_retrieve_value_from_array()
     {
-        $binder = app(DataBinder::class);
-        $binder->bind(['foo' => 'bar']);
-
+        DataBinder::bind(['foo' => 'bar']);
         $this->assertEquals('bar', DataValue::get('foo'));
     }
 
     /** @test */
     public function it_can_retrieve_value_from_collection()
     {
-        $binder = app(DataBinder::class);
-        $binder->bind(Collection::make(['foo' => 'bar']));
-
+        DataBinder::bind(Collection::make(['foo' => 'bar']));
         $this->assertEquals('bar', DataValue::get('foo'));
     }
 
@@ -45,8 +41,7 @@ class DataValueTest extends TestCase
         $commentB = Comment::create(['content' => 'Content B']);
         $commentC = $post->comments()->create(['content' => 'Content C']);
 
-        $binder = app(DataBinder::class);
-        $binder->bind($post);
+        DataBinder::bind($post);
 
         $this->assertContains($commentA->getKey(), DataValue::get('comments'));
         $this->assertContains($commentC->getKey(), DataValue::get('comments'));
@@ -64,8 +59,7 @@ class DataValueTest extends TestCase
         $commentC = Comment::create(['content' => 'Content C']);
         $post->comments()->sync([$commentA->getKey(), $commentC->getKey()]);
 
-        $binder = app(DataBinder::class);
-        $binder->bind($post);
+        DataBinder::bind($post);
 
         $this->assertContains($commentA->getKey(), DataValue::get('comments'));
         $this->assertContains($commentC->getKey(), DataValue::get('comments'));
@@ -82,8 +76,7 @@ class DataValueTest extends TestCase
         $commentB = Comment::create(['content' => 'Content B']);
         $commentC = $post->comments()->create(['content' => 'Content C']);
 
-        $binder = app(DataBinder::class);
-        $binder->bind($post);
+        DataBinder::bind($post);
 
         $this->assertContains($commentA->getKey(), DataValue::get('comments'));
         $this->assertContains($commentC->getKey(), DataValue::get('comments'));
@@ -100,8 +93,7 @@ class DataValueTest extends TestCase
         $commentB = Comment::create(['content' => 'Content B']);
         $commentC = $post->comments()->create(['content' => 'Content C']);
 
-        $binder = app(DataBinder::class);
-        $binder->bind($post);
+        DataBinder::bind($post);
 
         $this->assertContains($commentA->getKey(), DataValue::get('comments'));
         $this->assertContains($commentC->getKey(), DataValue::get('comments'));
