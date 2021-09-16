@@ -3,6 +3,7 @@
 namespace Vespera\DataBinder;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class DataValue
 {
@@ -21,6 +22,7 @@ class DataValue
 
         $bind = $bind ?: $this->binder->last();
 
+        $name = Str::dot($name);
         $value = data_get($bind, $name);
 
         return ($value instanceof Collection)

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97f7174052ef73c0b77289227637026f",
+    "content-hash": "6e4c4b97a0ac29fb9e7a1ce2feaf9dc3",
     "packages": [
         {
             "name": "brick/math",
@@ -3931,6 +3931,64 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.3"
             },
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "vesperabr/laravel-macros",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vesperabr/laravel-macros.git",
+                "reference": "33a7955e29c0fdef3b679432bcb7450c9557685d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vesperabr/laravel-macros/zipball/33a7955e29c0fdef3b679432bcb7450c9557685d",
+                "reference": "33a7955e29c0fdef3b679432bcb7450c9557685d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.20",
+                "phpunit/phpunit": "^9.4.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Vespera\\LaravelMacros\\Support\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vespera\\LaravelMacros\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ricardo Monteiro",
+                    "email": "ricardo.monteiro@vespera.com.br"
+                }
+            ],
+            "description": "A set of useful Laravel macros",
+            "homepage": "https://github.com/vesperabr/laravel-macros",
+            "keywords": [
+                "laravel",
+                "macros",
+                "vespera"
+            ],
+            "support": {
+                "issues": "https://github.com/vesperabr/laravel-macros/issues",
+                "source": "https://github.com/vesperabr/laravel-macros/tree/1.0.1"
+            },
+            "time": "2021-09-06T21:27:36+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
