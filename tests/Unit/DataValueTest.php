@@ -32,6 +32,30 @@ class DataValueTest extends TestCase
     }
 
     /** @test */
+    public function it_can_retrieve_value_passing_a_doted_notation_name()
+    {
+        DataBinder::bind([
+            'foo' => [
+                'bar' => 'foobar'
+            ]
+        ]);
+
+        $this->assertEquals('foobar', DataValue::get('foo.bar'));
+    }
+
+    /** @test */
+    public function it_can_retrieve_value_passing_a_bracked_name()
+    {
+        DataBinder::bind([
+            'foo' => [
+                'bar' => 'foobar'
+            ]
+        ]);
+
+        $this->assertEquals('foobar', DataValue::get('foo[bar]'));
+    }
+
+    /** @test */
     public function it_retrieve_keys_from_has_many_relationship()
     {
         $this->setupDatabase();
